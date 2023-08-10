@@ -1,0 +1,74 @@
+{
+  "name": "ichaty",
+  "description": "Chaty, satisfy all your imagination about chatGPT! deploy your chatGPT web service, api service, wechat bot service etc.",
+  "version": "0.1.14",
+  "main": "index.js",
+  "keywords": [
+    "chatGPT",
+    "chatbot",
+    "wechat",
+    "nodejs",
+    "telegram",
+    "chatGPT"
+  ],
+  "bin": {
+    "chaty": "./bin/index.js",
+    "ichaty": "./bin/index.js"
+  },
+  "scripts": {
+    "devBuild": "shx rm -rf lib && tsc",
+    "build": "shx rm -rf lib && tsc --sourceMap false && npm run copyWeb && npm run copyWechat && npm run copyNode && npm run cleanEnv",
+    "copyWeb": "shx mkdir -p ./lib/src/services/web && shx cp -r ./src/services/web ./lib/src/services/",
+    "copyWechat": "shx mkdir -p ./lib/src/services/wechat && shx cp -r ./src/services/wechat ./lib/src/services/",
+    "copyNode": "shx mkdir -p ./lib/src/services/node && shx cp -r ./src/services/node ./lib/src/services/",
+    "prepublish": "npm run cleanEnv",
+    "cleanEnv": "shx rm -rf ./lib/src/services/**/.env"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "package.json",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cosin2077/chaty.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cosin2077/chaty/issues"
+  },
+  "homepage": "https://github.com/cosin2077/chaty#readme",
+  "devDependencies": {
+    "@types/debug": "^4.1.7",
+    "@types/fs-extra": "^11.0.1",
+    "@types/minimist": "^1.2.2",
+    "@types/node": "^18.14.5",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "eslint": "^8.35.0",
+    "eslint-config-standard-with-typescript": "^34.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "shx": "^0.3.4",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "axios": "^1.3.4",
+    "boxen": "^5.1.2",
+    "colors": "^1.4.0",
+    "commander": "^10.0.0",
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.3",
+    "fs-extra": "^11.1.0",
+    "minimist": "^1.2.8",
+    "openai": "^3.2.1",
+    "ora": "^5.4.1",
+    "pino": "^8.11.0",
+    "pino-tee": "^0.3.0",
+    "pkg-install": "^1.0.0",
+    "semver": "^7.3.8"
+  }
+}
